@@ -1,0 +1,11 @@
+server {
+    listen <%= node.nginx.port %>;
+
+    server_name <%= node.app.server_name %> <%= node.app.server_alias %>;
+    access_log <%= node.app.web_dir %>/logs/<%= node.app.server_name %>.access.log;
+    error_log <%= node.app.web_dir %>/logs/<%= node.app.server_name %>.error.log;
+
+    keepalive_timeout 10;
+    root <%= node.app.web_dir %>/public;
+    index index.html;
+}
