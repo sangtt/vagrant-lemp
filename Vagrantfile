@@ -22,4 +22,26 @@ Vagrant.configure(2) do |config|
     end
     config.vm.provision :hostmanager
 
+    # Enable and configure chef solo
+    config.vm.provision :chef_solo do |chef|
+        chef.add_recipe "app::packages"
+        chef.add_recipe "app::nginx"
+        chef.json = {
+            :app => {
+                :name => project_name,
+                :user => "vagrant",
+
+                :server_name => "#{project_name}",
+                :server_alias => "www.#{project_name}",
+                :web_dir => "/var/www/#{project_name}",
+
+                :packages => %w{ vim git curl },
+            },
+            :nginx => {
+                :port => "80",
+                :default_site_enabled => false
+            }
+        }
+    end
+
 end

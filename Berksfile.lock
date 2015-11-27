@@ -3,9 +3,33 @@ DEPENDENCIES
     path: site-cookbooks/app
   apt
   build-essential
+  nginx
+  openssl
 
 GRAPH
   app (1.0.0)
     apt (>= 0.0.0)
+    nginx (>= 0.0.0)
+    openssl (>= 0.0.0)
   apt (2.9.2)
+  bluepill (2.4.1)
+    rsyslog (~> 2.0)
   build-essential (2.2.4)
+  chef-sugar (3.1.1)
+  nginx (2.7.6)
+    apt (~> 2.2)
+    bluepill (~> 2.3)
+    build-essential (~> 2.0)
+    ohai (~> 2.0)
+    runit (~> 1.2)
+    yum-epel (~> 0.3)
+  ohai (2.0.4)
+  openssl (4.4.0)
+    chef-sugar (>= 3.1.1)
+  packagecloud (0.1.1)
+  rsyslog (2.2.0)
+  runit (1.7.4)
+    packagecloud (>= 0.0.0)
+  yum (3.8.2)
+  yum-epel (0.6.5)
+    yum (~> 3.2)
